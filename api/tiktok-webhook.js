@@ -23,10 +23,10 @@ export default async function handler(req, res) {
           event_time: eventTime,
           event_id: `order_${order.id}`,
           test_event_code: "TEST86065",
-          user: {
-            email: hashSHA256(order.email),
-            phone: hashSHA256(order.phone),
-          },
+         user: {
+  email: hashSHA256(order.email),
+  ...(order.phone ? { phone: hashSHA256(order.phone) } : {}),
+},
           properties: {
             currency: order.currency,
             value: parseFloat(order.total_price),

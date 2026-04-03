@@ -22,7 +22,7 @@ export default async function handler(req, res) {
           event: "CompletePayment",
           event_time: eventTime,
           event_id: `order_${order.id}`,
-          test_event_code: "TEST86065",
+          
          user: {
   email: hashSHA256(order.email),
   ...(order.phone ? { phone: hashSHA256(order.phone) } : {}),
